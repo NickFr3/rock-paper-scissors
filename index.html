@@ -1,85 +1,10 @@
 <!DOCTYPE html>
 
 <html lang="en">
-<script>
-    const moves = ['Rock', 'Paper', 'Scissors'];
-
-    // Get computer choice and return it
-    function getComputerChoice() {
-        let computerChoice = Math.floor(Math.random() * moves.length);
-
-        return moves[computerChoice];
-    }
-
-    // Play round function
-    function playRound(playerSelection, computerSelection) {
-        let player = playerSelection.toLowerCase();
-        let computer = computerSelection.toLowerCase();
-        let result = '';
-
-        if (player == 'rock' && computer == 'paper' ||
-            player == 'paper' && computer == 'scissors' ||
-            player == 'scissors' && computer == 'rock') {
-
-            result = `You Lose! ${computer} beats ${player}.`;
-
-        } else if (player == 'rock' && computer == 'scissors' ||
-                   player == 'scissors' && computer == 'paper' ||
-                   player == 'paper' && computer == 'rock') {
-
-            result = `You win! ${player} beats ${computer}.`;
-
-        } else {
-            result = "It's a tie!";
-        }
-
-        return result;
-
-    }
-
-    // TODO: playGame function
-    function playGame() {
-
-        let playerWins = 0;
-        let computerWins = 0;
-
-        for (let i = 0; i < 5; i++) {
-            // Prompt user for input
-            let playerSelection = '';
-            let valid = false;
-            do {
-                playerSelection = prompt('Rock, Paper or Scissors? ');
-
-                // Check if choice is valid, otherwise prompt again
-                for (let i = 0; i < moves.length; i++) {
-                    if (playerSelection.toLowerCase() == moves[i].toLowerCase()) {
-                        valid = true;
-                    }
-                }
-
-            } while (!valid);
-
-            let computerSelection = getComputerChoice();
-
-            let roundResult = playRound(playerSelection, computerSelection);
-            console.log(roundResult);
-
-            if (roundResult.includes('You win')) {
-                playerWins++;
-            } else if (roundResult.includes('You lose')) {
-                computerWins++;
-            }
-        }
-
-        if (playerWins > computerWins) {
-            console.log('Player wins!');
-        } else if (playerWins < computerWins) {
-            console.log('Computer wins!');
-        } else {
-            console.log('It\'s a tie!')
-        }
-    }
-
-    playGame();
-</script>
+    <head>
+        <title>Rock Paper Scissors</title>
+    </head>
+    <body>
+        <script src="./app.js"></script>
+    </body>
 </html>
