@@ -44,6 +44,14 @@ function playRound(playerSelection, computerSelection) {
 
 }
 
+const rockButton = document.createElement("button");
+const paperButton = document.createElement("button");
+const schissorsButton = document.createElement("button");
+
+rockButton.addEventListener("click", playRound());
+
+
+/*
 // Play game function
 function playGame() {
 
@@ -80,5 +88,6 @@ function playGame() {
 
 
 }
+*/
 
 playGame();
