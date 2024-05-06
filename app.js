@@ -1,3 +1,4 @@
+// Initialize moves array
 const moves = ['rock', 'paper', 'scissors'];
 
 // Get computer choice and return it
@@ -54,31 +55,49 @@ function playGame() {
     buttonsDiv.appendChild(rockButton);
     buttonsDiv.appendChild(paperButton);
     buttonsDiv.appendChild(scissorsButton);
-
     document.body.appendChild(buttonsDiv);
+
+    // Display running score
+    let scoreDisplay = document.createElement("div");
+    scoreDisplay.textContent = `Player: ${playerWins} Computer: ${computerWins}`;
+    document.body.appendChild(scoreDisplay);
+
+    // Dusplay round result
+    let roundResult = document.createElement("div");
+    document.body.appendChild(roundResult);
+
+    // Display game result
+    let gameResult = document.createElement("Div");
+    document.body.appendChild(gameResult);
 
     // Check for click and return result using playRound() function
     rockButton.addEventListener("click", () => {
-        // Initialise computer selection
+        // Initialize computer selection
         let computerSelection = getComputerChoice();
         
-        let roundResult = playRound('rock', computerSelection);
+        let round = playRound('rock', computerSelection);
 
-        if (roundResult.includes('win')) {
+        // Display current round result
+        roundResult.textContent = round;
+
+        if (round.includes('win')) {
             playerWins += 1;
-        } else if (roundResult.includes('lose')) {
+        } else if (round.includes('lose')) {
             computerWins += 1;
         }
 
+        // Update displayed score
+        scoreDisplay.textContent = `Player: ${playerWins} Computer: ${computerWins}`;
+
         if (playerWins == 5) {
-            alert('Player wins the game!');
+            gameResult.textContent = 'Player wins the game!';
 
             rockButton.disabled = true;
             paperButton.disabled = true;
             scissorsButton.disabled = true;
 
         } else if (computerWins == 5) {
-            alert('Computer wins the game!');
+            gameResult.textContent = 'Computer wins the game!';
 
             rockButton.disabled = true;
             paperButton.disabled = true;
@@ -87,26 +106,32 @@ function playGame() {
     });
 
     paperButton.addEventListener("click", () => {
-        // Initialise computer selection
+        // Initialize computer selection
         let computerSelection = getComputerChoice();
 
-        let roundResult = playRound('paper', computerSelection);
+        let round = playRound('paper', computerSelection);
 
-        if (roundResult.includes('win')) {
+        // Display current round result
+        roundResult.textContent = round;
+
+        if (round.includes('win')) {
             playerWins += 1;
-        } else if (roundResult.includes('lose')) {
+        } else if (round.includes('lose')) {
             computerWins += 1;
         }
 
+        // Update displayed score
+        scoreDisplay.textContent = `Player: ${playerWins} Computer: ${computerWins}`;
+
         if (playerWins == 5) {
-            alert('Player wins the game!');
+            gameResult.textContent = 'Player wins the game!';
 
             rockButton.disabled = true;
             paperButton.disabled = true;
             scissorsButton.disabled = true;
 
         } else if (computerWins == 5) {
-            alert('Computer wins the game!');
+            gameResult.textContent = 'Computer wins the game!';
 
             rockButton.disabled = true;
             paperButton.disabled = true;
@@ -115,26 +140,32 @@ function playGame() {
     });
 
     scissorsButton.addEventListener("click", () => {
-        // Initialise computer selection
+        // Initialize computer selection
         let computerSelection = getComputerChoice();
 
-        let roundResult = playRound('scissors', computerSelection);
+        let round = playRound('scissors', computerSelection);
 
-        if (roundResult.includes('win')) {
+        // Display current round result
+        roundResult.textContent = round;
+
+        if (round.includes('win')) {
             playerWins += 1;
-        } else if (roundResult.includes('lose')) {
+        } else if (round.includes('lose')) {
             computerWins += 1;
         }
 
+        // Update displayed score
+        scoreDisplay.textContent = `Player: ${playerWins} Computer: ${computerWins}`;
+
         if (playerWins == 5) {
-            alert('Player wins the game!');
+            gameResult.textContent = 'Player wins the game!';
 
             rockButton.disabled = true;
             paperButton.disabled = true;
             scissorsButton.disabled = true;
 
         } else if (computerWins == 5) {
-            alert('Computer wins the game!');
+            gameResult.textContent = 'Computer wins the game!';
 
             rockButton.disabled = true;
             paperButton.disabled = true;
