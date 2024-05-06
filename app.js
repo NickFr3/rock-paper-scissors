@@ -7,20 +7,10 @@ function getComputerChoice() {
     return moves[computerChoice];
 }
 
-// Get user choice and return it
-function getPlayerChoice() {
-    let choice = '';
 
-    do {
-        choice = prompt('Rock, Paper or Scissors?');
-    } while (!moves.includes(choice.toLowerCase()));
-    
-    return choice;
-}
-
-// Play round function
+// Play a single round and return result
 function playRound(playerSelection, computerSelection) {
-    let player = playerSelection.toLowerCase();
+    let player = playerSelection;
     let computer = computerSelection.toLowerCase();
     let result = '';
 
@@ -41,39 +31,73 @@ function playRound(playerSelection, computerSelection) {
     }
 
     return result;
-
 }
 
-const rockButton = document.createElement("button");
-const paperButton = document.createElement("button");
-const schissorsButton = document.createElement("button");
 
-rockButton.addEventListener("click", playRound());
-
-
-/*
 // Play game function
 function playGame() {
 
     let playerWins = 0;
     let computerWins = 0;
 
-    // Play n rounds (5 hardcoded)
-    for (let i = 0; i < 5; i++) {
-        // Prompt user for input
-        let playerSelection = getPlayerChoice();
+    // Play until someone reaches 5 points
+    while (playerWins < 5 && computerWins < 5) {
 
-        let computerSelection = getComputerChoice();
+        // Create buttons to play game in ui
+        const rockButton = document.createElement("button");
+        const paperButton = document.createElement("button");
+        const scissorsButton = document.createElement("button");
 
-        let roundResult = playRound(playerSelection, computerSelection);
-        console.log(roundResult);
+        // Append buttons to a div to display them
+        const buttonsDiv = document.createElement("div");
 
-        if (roundResult.includes('win')) {
-            playerWins += 1;
-        } else if (roundResult.includes('lose')) {
-            computerWins += 1;
-        }
+        buttonsDiv.appendChild(rockButton);
+        buttonsDiv.appendChild(paperButton);
+        buttonsDiv.appendChild(scissorsButton);
+
+        document.body.appendChild(buttonsDiv);
+
+        // Check for click and return result using playRound() function
+        rockButton.addEventListener("click", () => {
+            // Initialise computer selection
+            let computerSelection = getComputerChoice();
+            
+            let roundResult = playRound('rock', computerSelection);
+
+            if (roundResult.includes('win')) {
+                playerWins += 1;
+            } else if (roundResult.includes('lose')) {
+                computerWins += 1;
+            }
+        });
+        paperButton.addEventListener("click", () => {
+            // Initialise computer selection
+            let computerSelection = getComputerChoice();
+
+            playRound('paper', computerSelection);
+
+            if (roundResult.includes('win')) {
+                playerWins += 1;
+            } else if (roundResult.includes('lose')) {
+                computerWins += 1;
+            }
+        });
+        scissorsButton.addEventListener("click", () => {
+            // Initialise computer selection
+            let computerSelection = getComputerChoice();
+
+            playRound('scissors', computerSelection);
+
+            if (roundResult.includes('win')) {
+                playerWins += 1;
+            } else if (roundResult.includes('lose')) {
+                computerWins += 1;
+            }
+        });
+
+        
     }
+        
 
     // Print game results
     console.log(`Final results: Player [${playerWins} points] Computer [${computerWins} points]`);
@@ -88,6 +112,5 @@ function playGame() {
 
 
 }
-*/
 
 playGame();
